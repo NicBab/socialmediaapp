@@ -12,7 +12,7 @@ const FriendListWidget = ({ userId }) => {
   const friends = useSelector((state) => state.user.friends);
 
   const getFriends = async () => {
-    const res = await fetch(`http://localhost:3001/users/${userId}/friends`, {
+    const res = await fetch(`https://social-app-6hl7.onrender.com/users/${userId}/friends`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
