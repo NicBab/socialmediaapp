@@ -25,6 +25,7 @@ import { verifyToken } from "./middleware/auth.js";
 
 
 //CONFIG
+const PORT = process.env.PORT || 6001;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config();
@@ -58,8 +59,12 @@ app.use("/auth", authRoutes)
 app.use("/users", userRoutes)
 app.use("/posts", postRoutes)
 
+app.get("/", async (rq, res) => {
+  res.send("Hello from social app!");
+});
+
 //MONGOOSE SETUP
-const PORT = process.env.PORT || 6001;
+
 mongoose.set("strictQuery", true);
 mongoose
   .connect(process.env.MONGO_URL, {
